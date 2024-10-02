@@ -1,0 +1,124 @@
+{
+    "items": [
+        {
+            "name": "T-shirt",
+            "code": 1,
+            "color": "Red",
+            "seller": "ABC Clothing",
+            "price": 19.0,
+            "buyer": null
+        },
+        {
+            "name": "Jeans",
+            "code": null,
+            "color": "Blue",
+            "seller": "XYZ Denim",
+            "price": 49.9,
+            "buyer": "John Smith"
+        },
+        {
+            "name": "Book",
+            "code": 3,
+            "color": null,
+            "seller": "PQR Library",
+            "price": 9.9,
+            "buyer": null
+        },
+        {
+            "name": "Tea",
+            "code": 4,
+            "color": null,
+            "seller": "MNO Plantation",
+            "price": 2.0,
+            "buyer": "Jane Doe"
+        },
+        {
+            "name": "Sweater",
+            "code": 5,
+            "color": "Gray",
+            "seller": "ABC Clothing",
+            "price": 70.5,
+            "buyer": null
+        },
+        {
+            "name": "Wallpapers",
+            "code": null,
+            "color": "Green",
+            "seller": "GHI Buildings",
+            "price": 39.9,
+            "buyer": "Mike Johnson"
+        },
+        {
+            "name": "Smartphone",
+            "code": 7,
+            "color": "Black",
+            "seller": "LMN Electronics",
+            "price": 549.9,
+            "buyer": null
+        },
+        {
+            "name": "Laptop",
+            "code": 8,
+            "color": "Silver",
+            "seller": "STU Computers",
+            "price": 1000.0,
+            "buyer": "Emily Davis"
+        },
+        {
+            "name": "Board Game",
+            "code": 9,
+            "color": null,
+            "seller": "VWX Games",
+            "price": 29.9,
+            "buyer": null
+        },
+        {
+            "name": "Glasses",
+            "code": 10,
+            "color": "White",
+            "seller": "YZA Optics",
+            "price": 9.9,
+            "buyer": "David Lee"
+        },
+        {
+            "name": "Camera",
+            "code": null,
+            "color": null,
+            "seller": "BCD Photography",
+            "price": 599.99,
+            "buyer": null
+        },
+        {
+            "name": "Pencil",
+            "code": 12,
+            "color": "Purple",
+            "seller": "EFG Office Supplies",
+            "price": 3.99,
+            "buyer": "Sarah Brown"
+        },
+        {
+            "name": "Boots",
+            "code": 13,
+            "color": "Brown",
+            "seller": "HIJ Sportswear",
+            "price": 69.0,
+            "buyer": null
+        },
+        {
+            "name": "Earbuds",
+            "code": null,
+            "color": "Gray",
+            "seller": "LMN Electronics",
+            "price": 199.9,
+            "buyer": "Tom Wilson"
+        },
+        {
+            "name": "Tablet",
+            "code": 15,
+            "color": "Red",
+            "seller": "LMN Electronics",
+            "price": 789.9,
+            "buyer": null
+        }
+    ]
+}

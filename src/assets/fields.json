@@ -1,0 +1,25 @@
+{
+    "name": {
+        "type": "str"
+    },
+    "code": {
+        "type": "int"
+    },
+    "color": {
+        "type": "str",
+        "isColor": true,
+        "values": ["Red", "Blue", "Gray", "Green", "Black", "Silver", "Purple", "White", "Brown"]
+    },
+    "price": {
+        "type": "float",
+        "unit": "$",
+        "minValue": 2,
+        "maxValue": 1000
+    },
+    "seller": {
+        "type": "str"
+    },
+    "buyer": {
+        "type": "str"
+    }
+}
