@@ -2,10 +2,14 @@ class ItemsStorage {
     constructor() {
         this.items = [];
         this.listeners = [];
+        this.pages = 0;
+        this.page = 0;
     }
 
-    updateItems(items) {
+    updateItems(items, pages, page) {
         this.items = items;
+        this.pages = pages;
+        this.page = page;
         this.notifyListeners();
     }
 

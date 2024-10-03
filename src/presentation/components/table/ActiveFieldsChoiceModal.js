@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './ActiveFieldsChoiceModal.css';
 
 function ActiveFieldsChoiceModal({
@@ -8,48 +8,49 @@ function ActiveFieldsChoiceModal({
     selectedFields, 
     onSelectionChange
 }) {
-    const [localSelectedFields, setLocalSelectedFields] = useState(selectedFields.map((field) => field.name));
+    const [currentSelectedFields, setCurrentSelectedFields] = useState(selectedFields.map((field) => field.name));
+    useEffect(() => {setCurrentSelectedFields(selectedFields.map((field) => field.name))}, [selectedFields]);
 
     const handleSelectionChange = (event) => {
         const value = event.target.value;
         const isChecked = event.target.checked;
     
         if (isChecked) {
-            setLocalSelectedFields([...localSelectedFields, value]);
+            setCurrentSelectedFields([...currentSelectedFields, value]);
         } else {
-            setLocalSelectedFields(localSelectedFields.filter((field) => field !== value));
+            setCurrentSelectedFields(currentSelectedFields.filter((field) => field !== value));
         }
     };
     
     const handleSave = () => {
-        onSelectionChange(fields.filter((field) => localSelectedFields.includes(field.name)));
+        onSelectionChange(fields.filter((field) => currentSelectedFields.includes(field.name)));
         onClose();
     };
     
     const handleCancel = () => {
-        setLocalSelectedFields(selectedFields.map((field) => field.name));
+        setCurrentSelectedFields(selectedFields.map((field) => field.name));
         onClose();
     };
     
     return (
-        <div className={`modal ${isOpen ? 'open' : ''}`}>
-            <div className="modal-content">
-                <h2>Выберите значения:</h2>
+        <div className={`active-fields-choice-modal ${isOpen ? 'open' : ''}`}>
+            <div className="active-fields-choice-modal-content">
+                <h2>Выберите столбцы:</h2>
                 <form>
                     {fields.map((field) => (
-                        <div key={`${field.name}-modal`}>
+                        <div key={`${field.name}-active-fields-choice-modal`}>
                             <input
                                 type="checkbox"
                                 id={field.name}
                                 value={field.name}
-                                checked={localSelectedFields.includes(field.name)}
+                                checked={currentSelectedFields.includes(field.name)}
                                 onChange={handleSelectionChange}
                             />
                             <label htmlFor={field.name}>{field.name}</label>
                         </div>
                     ))}
                 </form>
-                <div className="modal-buttons">
+                <div className="active-fields-choice-modal-buttons">
                     <button onClick={handleSave}>Сохранить</button>
                     <button onClick={handleCancel}>Отмена</button>
                 </div>

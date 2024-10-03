@@ -1,0 +1,8 @@
+.search-by-filters-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.search-by-filters-button {
+    margin-top: 10px;
+}

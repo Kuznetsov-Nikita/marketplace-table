@@ -31,20 +31,19 @@ class SearchByCodeComponent extends React.Component {
         const { code } = this.state;
 
         return (
-            <div className="searchByCodeContainer">
-                <label htmlFor="searchByCodeInput">Поиск по коду:</label>
+            <div className="search-by-code-container">
+                <label htmlFor="search-by-code-input">Поиск по коду:</label>
                 <input
-                    id="searchByCodeInput"
+                    id="search-by-code-input"
                     type="text"
                     onChange={(code) => {
-                        this.searchByCodeBloc.onCodeChanged(code.currentTarget.value);
+                        this.searchByCodeBloc.changeCode(code.currentTarget.value);
                     }}
                     value={code}
                 />
-                <div className="row mt-4">
+                <div>
                     <button
                         type="button"
-                        className="col btn btn-primary"
                         onClick={() => this.searchByCodeBloc.onSearchButtonClick()}
                     >
                         Поиск

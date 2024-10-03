@@ -9,7 +9,8 @@ class FieldsInfo {
                 info[key].unit, 
                 info[key].minValue, 
                 info[key].maxValue, 
-                info[key].isColor
+                info[key].isColor,
+                info[key].values
             );
         }
     }

@@ -49,15 +49,15 @@ class TableComponent extends React.Component {
     }
 
     handleSelectionChange = (selectedFields) => {
-        this.tableBloc.onActiveFieldsChanged(selectedFields);
+        this.tableBloc.changeActiveFields(selectedFields);
     };
 
     render() {
         const { fields, items, isOpen } = this.state;
 
         return (
-            <div>
-                <button onClick={this.handleOpenModal}>Открыть модальное окно</button>
+            <div className="table-container">
+                <button onClick={this.handleOpenModal}>Изменить отображаемые столбцы</button>
                 <ActiveFieldsChoiceModal
                     isOpen={isOpen}
                     onClose={this.handleCloseModal}

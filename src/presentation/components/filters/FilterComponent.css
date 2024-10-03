@@ -1,0 +1,59 @@
+.filter-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.subfilter {
+    margin: 5px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.values-choice {
+    display: inline;
+}
+
+form {
+    margin-top: 10px;
+}
+
+h3 {
+    margin: 5px 0;
+}
+
+input[type='text'] {
+    min-width: 100px;
+}
+  
+.range-filter {
+    display: flex;
+    justify-content:flex-start;
+}
+  
+.range-filter input[type='number'] {
+    width: 50px;
+    min-width: 50px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.color-picker {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+  
+.color-picker__color {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+  
+.color-picker__color.selected {
+    border: 2px solid #000;
+}

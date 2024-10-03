@@ -19,7 +19,7 @@ class SearchByCodeBloc {
         }
     };
 
-    onCodeChanged = (code) => {
+    changeCode = (code) => {
         this.code = code;
         this.notifyViewAboutChanges();
     };

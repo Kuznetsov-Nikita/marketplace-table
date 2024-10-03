@@ -8,13 +8,11 @@ class SearchByCodeUseCase {
         let found;
         try {
             found = await this.itemsRepository.searchByCode(code);
-            this.itemsStorage.updateItems([found]);
+            this.itemsStorage.updateItems([found], 1, 1);
         } catch(err) {
             found = null;
-            this.itemsStorage.updateItems([]);
+            this.itemsStorage.updateItems([], 0, 0);
         }
-
-        return found;
     }
 }
 

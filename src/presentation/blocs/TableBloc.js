@@ -34,7 +34,7 @@ class TableBloc {
         this.notifyViewAboutChanges();
     };
 
-    onActiveFieldsChanged = (activeFields) => {
+    changeActiveFields = (activeFields) => {
         this.activeFields = activeFields;
         this.notifyViewAboutChanges();
     }
