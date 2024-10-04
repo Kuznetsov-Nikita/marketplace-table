@@ -73,7 +73,13 @@ class FilterComponent extends React.Component {
     }
 
     render() {
-        const { containsString, selectedValues, fromValue, toValue, value } = this.state;
+        const { 
+            containsString, 
+            selectedValues, 
+            fromValue, 
+            toValue, 
+            value 
+        } = this.state;
         const isColor = this.filterBloc.fieldInfo.isColor;
         
         return (
@@ -161,7 +167,9 @@ function ColorsChoiceFilter({values, selectedValues, onChange}) {
                 {values.map((color) => (
                     <div 
                         key={color}
-                        className={`color-picker__color ${selectedValues.includes(color) ? 'selected' : ''}`}
+                        className={`color-picker__color ${
+                            selectedValues.includes(color) ? 'selected' : ''
+                        }`}
                         style={{ backgroundColor: color }}
                         onClick={() => onChange(color)}
                     />
@@ -171,7 +179,12 @@ function ColorsChoiceFilter({values, selectedValues, onChange}) {
     );
 }
 
-function RangeFilter({fromValue, toValue, onFromValueChanged, onToValueChanged}) {
+function RangeFilter({
+    fromValue, 
+    toValue, 
+    onFromValueChanged, 
+    onToValueChanged
+}) {
     return (
         <div className="subfilter range-filter">
             <p>От</p>

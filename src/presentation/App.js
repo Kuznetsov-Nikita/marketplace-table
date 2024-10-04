@@ -19,15 +19,27 @@ function App() {
     const fieldsInfoStorage = new FieldsInfoStorage();
     const itemsStorage = new ItemsStorage();
     const filtersStorage = new FiltersStorage();
-    const getFieldsUseCase = new GetFieldsUseCase(itemsRepository, fieldsInfoStorage);
-    const searchByCodeUseCase = new SearchByCodeUseCase(itemsRepository, itemsStorage);
-    const searchByFieldsUseCase = new SearchByFieldsUseCase(itemsRepository, itemsStorage);
+    const getFieldsUseCase = 
+        new GetFieldsUseCase(itemsRepository, fieldsInfoStorage);
+    const searchByCodeUseCase = 
+        new SearchByCodeUseCase(itemsRepository, itemsStorage);
+    const searchByFieldsUseCase = 
+        new SearchByFieldsUseCase(itemsRepository, itemsStorage);
 
     getFieldsUseCase.getFields();
 
     const searchByCodeBloc = new SearchByCodeBloc(searchByCodeUseCase);
-    const tableBloc = new TableBloc(fieldsInfoStorage, itemsStorage, filtersStorage, searchByFieldsUseCase);
-    const filtersBloc = new FiltersBloc(fieldsInfoStorage, searchByFieldsUseCase, filtersStorage);
+    const tableBloc = new TableBloc(
+        fieldsInfoStorage, 
+        itemsStorage, 
+        filtersStorage, 
+        searchByFieldsUseCase
+    );
+    const filtersBloc = new FiltersBloc(
+        fieldsInfoStorage, 
+        filtersStorage, 
+        searchByFieldsUseCase
+    );
 
     return (
         <div className="App">

@@ -37,14 +37,17 @@ class SearchByCodeComponent extends React.Component {
                     id="search-by-code-input"
                     type="text"
                     onChange={(code) => {
-                        this.searchByCodeBloc.changeCode(code.currentTarget.value);
+                        this.searchByCodeBloc
+                            .changeCode(code.currentTarget.value);
                     }}
                     value={code}
                 />
                 <div>
                     <button
                         type="button"
-                        onClick={() => this.searchByCodeBloc.onSearchButtonClick()}
+                        onClick={
+                            () => this.searchByCodeBloc.onSearchButtonClick()
+                        }
                     >
                         Поиск
                     </button>

@@ -10,7 +10,6 @@ class SearchByCodeUseCase {
             found = await this.itemsRepository.searchByCode(code);
             this.itemsStorage.updateItems([found], 1, 1);
         } catch(err) {
-            found = null;
             this.itemsStorage.updateItems([], 0, 0);
         }
     }

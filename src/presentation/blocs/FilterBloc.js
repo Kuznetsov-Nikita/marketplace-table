@@ -9,8 +9,10 @@ class FilterBloc {
             this.values = [];
         }
         if (fieldInfo.type === 'int' || fieldInfo.type === 'float') {
-            this.fromValue = fieldInfo.minValue ? fieldInfo.minValue.toString() : '';
-            this.toValue = fieldInfo.maxValue ? fieldInfo.maxValue.toString() : '';
+            this.fromValue = fieldInfo.minValue 
+                ? fieldInfo.minValue.toString() : '';
+            this.toValue = fieldInfo.maxValue 
+                ? fieldInfo.maxValue.toString() : '';
             this.value = '';
         }
     }
@@ -31,31 +33,37 @@ class FilterBloc {
 
     changeContainsString = (containsString) => {
         this.containsString = containsString;
+
         this.notifyViewAboutChanges();
     }
 
     addValue = (value) => {
         this.values.push(value);
+
         this.notifyViewAboutChanges();
     }
 
     removeValue = (value) => {
         this.values.splice(this.values.indexOf(value), 1);
+
         this.notifyViewAboutChanges();
     }
 
     changeFromValue = (value) => {
         this.fromValue = value;
+
         this.notifyViewAboutChanges();
     }
 
     changeToValue = (value) => {
         this.toValue = value;
+
         this.notifyViewAboutChanges();
     }
 
     changeValue = (value) => {
         this.value = value;
+        
         this.notifyViewAboutChanges();
     }
 }

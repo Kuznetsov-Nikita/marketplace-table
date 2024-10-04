@@ -36,7 +36,7 @@ class TableComponent extends React.Component {
         }));
     }
 
-    handleOpenModal = () => {
+    onModalOpen = () => {
         this.setState((state) => ({
             fields: state.fields,
             items: state.items,
@@ -46,7 +46,7 @@ class TableComponent extends React.Component {
         }));
     }
 
-    handleCloseModal = () => {
+    onModalClose = () => {
         this.setState((state) => ({
             fields: state.fields,
             items: state.items,
@@ -56,7 +56,7 @@ class TableComponent extends React.Component {
         }));
     }
 
-    handleSelectionChange = (selectedFields) => {
+    onSelectionChange = (selectedFields) => {
         this.tableBloc.changeActiveFields(selectedFields);
     };
 
@@ -69,13 +69,15 @@ class TableComponent extends React.Component {
 
         return (
             <div className="table-container">
-                <button onClick={this.handleOpenModal}>Изменить отображаемые столбцы</button>
+                <button onClick={this.onModalOpen}>
+                    Изменить отображаемые столбцы
+                </button>
                 <ActiveFieldsChoiceModal
                     isOpen={isOpen}
-                    onClose={this.handleCloseModal}
+                    onClose={this.onModalClose}
                     fields={this.tableBloc.fields}
                     selectedFields={fields}
-                    onSelectionChange={this.handleSelectionChange}
+                    onSelectionChange={this.onSelectionChange}
                 />
                 <table className="table">
                     <thead>
@@ -89,7 +91,9 @@ class TableComponent extends React.Component {
                         {items.map((item, index) => (
                             <tr key={index}>
                                 {fields.map((field) => (
-                                    <td key={`${field.name}-${index}`}>{item[field.name]}</td>
+                                    <td key={`${field.name}-${index}`}>
+                                        {item[field.name]}
+                                    </td>
                                 ))}
                             </tr>
                         ))}
@@ -99,8 +103,13 @@ class TableComponent extends React.Component {
                     {[...Array(pagesCount).keys()].map((index) => (
                         <li 
                             key={index + 1} 
-                            className={index + 1 === currentPage ? 'active' : ''}
-                            onClick={index + 1 === currentPage ? null : () => this.onPageClick(index + 1)}
+                            className={
+                                index + 1 === currentPage ? 'active' : ''
+                            }
+                            onClick={
+                                index + 1 === currentPage 
+                                    ? null : () => this.onPageClick(index + 1)
+                            }
                         >
                             {index + 1}
                         </li>

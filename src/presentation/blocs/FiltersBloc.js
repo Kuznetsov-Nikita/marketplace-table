@@ -2,10 +2,10 @@ import FilterBloc from "./FilterBloc";
 import Filter from "../../domain/entities/Filter";
 
 class FiltersBloc {
-    constructor(fieldsInfoStorage, searchByFieldsUseCase, filtersStorage) {
+    constructor(fieldsInfoStorage, filtersStorage, searchByFieldsUseCase) {
         this.fieldsInfoStorage = fieldsInfoStorage;
-        this.searchByFieldsUseCase = searchByFieldsUseCase;
         this.filtersStorage = filtersStorage;
+        this.searchByFieldsUseCase = searchByFieldsUseCase;
 
         let fields = fieldsInfoStorage.getAllFieldsInfo();
         this.filters = fields.filter((field) => field.name !== 'code')
@@ -32,6 +32,7 @@ class FiltersBloc {
         let fields = this.fieldsInfoStorage.getAllFieldsInfo();
         this.filters = fields.filter((field) => field.name !== 'code')
                              .map((fieldInfo) => new FilterBloc(fieldInfo));
+
         this.notifyViewAboutChanges();
     };
 
@@ -44,10 +45,11 @@ class FiltersBloc {
                 } else {
                     values = filter.values;
                 }
+
                 return new Filter(
                     filter.fieldInfo.name, 
                     values,
-                    filter.fromValue !== null && filter.fromValue !== undefined 
+                    filter.fromValue !== null && filter.fromValue !== undefined
                         ? Number(filter.fromValue) : filter.fromValue,
                     filter.toValue !== null && filter.toValue !== undefined 
                         ? Number(filter.toValue) : filter.toValue,
@@ -56,7 +58,7 @@ class FiltersBloc {
             }
         );
 
-        this.filtersStorage.changeFilters(filtersInfo);
+        this.filtersStorage.updateFilters(filtersInfo);
         await this.searchByFieldsUseCase.searchByFields(filtersInfo, 0);
     };
 }

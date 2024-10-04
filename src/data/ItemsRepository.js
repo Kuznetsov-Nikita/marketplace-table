@@ -7,12 +7,10 @@ import SearchByFieldsResponse from "../domain/entities/SearchByFieldsResponse";
 
 class ItemsRepository {
     getFields() {
-        return new Promise((resolve, _reject) => 
-            setTimeout(
-                () => resolve(new FieldsInfo(fieldsData)), 
-                RESPONSE_TIMEOUT
-            )
-        );
+        return new Promise((resolve, _reject) => setTimeout(
+            () => resolve(new FieldsInfo(fieldsData)), 
+            RESPONSE_TIMEOUT
+        ));
     }
 
     searchByCode(code) {
@@ -41,7 +39,6 @@ class ItemsRepository {
                     filter.values.includes(item[fieldName])
                 );
             }
-            console.log(found);
             if (filter.rangeFrom) {
                 found = found.filter((item) => 
                     item[fieldName] >= filter.rangeFrom
@@ -63,7 +60,8 @@ class ItemsRepository {
         let pages = Math.ceil(found.length / ITEMS_PER_PAGE);
         let page = Math.floor(offset / ITEMS_PER_PAGE);
 
-        found = found.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
+        found = found
+            .slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
 
         return new Promise((resolve, _reject) => setTimeout(
             () => resolve(new SearchByFieldsResponse(

@@ -38,7 +38,12 @@ class FiltersComponent extends React.Component {
         return (
             <div>
                 <h2>Фильтры</h2>
-                {filterBlocs.map((bloc) => (<FilterComponent filterBloc={bloc} key={bloc.fieldInfo.name}/>))}
+                {filterBlocs.map((bloc) => (
+                    <FilterComponent 
+                        filterBloc={bloc} 
+                        key={bloc.fieldInfo.name}
+                    />
+                ))}
                 <div className='search-by-filters-button-container'>
                     <button 
                         className='search-by-filters-button' 

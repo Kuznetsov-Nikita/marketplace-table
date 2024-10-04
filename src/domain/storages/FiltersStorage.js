@@ -3,7 +3,7 @@ class FiltersStorage {
         this.filters = [];
     }
 
-    changeFilters(filters) {
+    updateFilters(filters) {
         this.filters = filters;
     }
 }

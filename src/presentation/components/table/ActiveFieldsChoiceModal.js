@@ -8,26 +8,36 @@ function ActiveFieldsChoiceModal({
     selectedFields, 
     onSelectionChange
 }) {
-    const [currentSelectedFields, setCurrentSelectedFields] = useState(selectedFields.map((field) => field.name));
-    useEffect(() => {setCurrentSelectedFields(selectedFields.map((field) => field.name))}, [selectedFields]);
+    const [currentSelectedFields, setCurrentSelectedFields] = 
+        useState(selectedFields.map((field) => field.name));
+    useEffect(
+        () => {
+            setCurrentSelectedFields(selectedFields.map((field) => field.name))
+        }, 
+        [selectedFields]
+    );
 
-    const handleSelectionChange = (event) => {
+    const onCurrentSelectionChange = (event) => {
         const value = event.target.value;
         const isChecked = event.target.checked;
     
         if (isChecked) {
             setCurrentSelectedFields([...currentSelectedFields, value]);
         } else {
-            setCurrentSelectedFields(currentSelectedFields.filter((field) => field !== value));
+            setCurrentSelectedFields(
+                currentSelectedFields.filter((field) => field !== value)
+            );
         }
     };
     
-    const handleSave = () => {
-        onSelectionChange(fields.filter((field) => currentSelectedFields.includes(field.name)));
+    const onSaveButtonClick = () => {
+        onSelectionChange(fields.filter(
+            (field) => currentSelectedFields.includes(field.name)
+        ));
         onClose();
     };
     
-    const handleCancel = () => {
+    const onCancelButtonClick = () => {
         setCurrentSelectedFields(selectedFields.map((field) => field.name));
         onClose();
     };
@@ -43,16 +53,18 @@ function ActiveFieldsChoiceModal({
                                 type="checkbox"
                                 id={field.name}
                                 value={field.name}
-                                checked={currentSelectedFields.includes(field.name)}
-                                onChange={handleSelectionChange}
+                                checked={
+                                    currentSelectedFields.includes(field.name)
+                                }
+                                onChange={onCurrentSelectionChange}
                             />
                             <label htmlFor={field.name}>{field.name}</label>
                         </div>
                     ))}
                 </form>
                 <div className="active-fields-choice-modal-buttons">
-                    <button onClick={handleSave}>Сохранить</button>
-                    <button onClick={handleCancel}>Отмена</button>
+                    <button onClick={onSaveButtonClick}>Сохранить</button>
+                    <button onClick={onCancelButtonClick}>Отмена</button>
                 </div>
             </div>
         </div>

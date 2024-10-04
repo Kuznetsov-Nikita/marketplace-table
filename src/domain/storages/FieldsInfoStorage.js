@@ -6,6 +6,7 @@ class FieldsInfoStorage {
 
     updateFieldsInfo(fieldsInfo) {
         this.fieldsInfo = fieldsInfo;
+        
         this.notifyListeners();
     }
 

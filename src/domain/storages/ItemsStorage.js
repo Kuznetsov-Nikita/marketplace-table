@@ -10,6 +10,7 @@ class ItemsStorage {
         this.items = items;
         this.pages = pages;
         this.page = page;
+        
         this.notifyListeners();
     }
 

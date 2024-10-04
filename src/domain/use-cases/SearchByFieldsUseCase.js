@@ -5,8 +5,10 @@ class SearchByFieldsUseCase {
     }
 
     async searchByFields(filters, offset) {
-        let response = await this.itemsRepository.searchByFields(filters, offset);
-        this.itemsStorage.updateItems(response.items, response.pages, response.page);
+        let response = await this.itemsRepository
+            .searchByFields(filters, offset);
+        this.itemsStorage
+            .updateItems(response.items, response.pages, response.page);
     }
 }
 

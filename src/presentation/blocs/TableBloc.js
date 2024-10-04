@@ -31,6 +31,7 @@ class TableBloc {
     onFieldsInfoChanged = () => {
         this.fields = this.fieldsInfoStorage.getAllFieldsInfo();
         this.activeFields = this.fields;
+
         this.notifyViewAboutChanges();
     };
     
@@ -40,11 +41,15 @@ class TableBloc {
 
     changeActiveFields = (activeFields) => {
         this.activeFields = activeFields;
+
         this.notifyViewAboutChanges();
     };
 
     onPageClick = async (page) => {
-        await this.searchByFieldsUseCase.searchByFields(this.filtersStorage.filters, ITEMS_PER_PAGE * (page - 1))
+        await this.searchByFieldsUseCase.searchByFields(
+            this.filtersStorage.filters, 
+            ITEMS_PER_PAGE * (page - 1)
+        );
     }
 }
 

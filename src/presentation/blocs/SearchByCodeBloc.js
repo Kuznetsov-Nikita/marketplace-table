@@ -21,6 +21,7 @@ class SearchByCodeBloc {
 
     changeCode = (code) => {
         this.code = code;
+        
         this.notifyViewAboutChanges();
     };
 
