@@ -12,6 +12,8 @@ class TableComponent extends React.Component {
         this.state = {
             fields: tableBloc.activeFields,
             items: tableBloc.itemsStorage.items,
+            currentPage: tableBloc.itemsStorage.page,
+            pagesCount: tableBloc.itemsStorage.pages,
             isOpen: false,
         };
     }
@@ -28,6 +30,8 @@ class TableComponent extends React.Component {
         this.setState((state) => ({
             fields: this.tableBloc.activeFields,
             items: this.tableBloc.itemsStorage.items,
+            currentPage: this.tableBloc.itemsStorage.page,
+            pagesCount: this.tableBloc.itemsStorage.pages,
             isOpen: state.isOpen,
         }));
     }
@@ -36,6 +40,8 @@ class TableComponent extends React.Component {
         this.setState((state) => ({
             fields: state.fields,
             items: state.items,
+            currentPage: state.currentPage,
+            pagesCount: state.pagesCount,
             isOpen: true,
         }));
     }
@@ -44,6 +50,8 @@ class TableComponent extends React.Component {
         this.setState((state) => ({
             fields: state.fields,
             items: state.items,
+            currentPage: state.currentPage,
+            pagesCount: state.pagesCount,
             isOpen: false,
         }));
     }
@@ -52,8 +60,12 @@ class TableComponent extends React.Component {
         this.tableBloc.changeActiveFields(selectedFields);
     };
 
+    onPageClick = (page) => {
+        this.tableBloc.onPageClick(page);
+    };
+
     render() {
-        const { fields, items, isOpen } = this.state;
+        const { fields, items, currentPage, pagesCount, isOpen } = this.state;
 
         return (
             <div className="table-container">
@@ -83,6 +95,17 @@ class TableComponent extends React.Component {
                         ))}
                     </tbody>
                 </table>
+                <ul>
+                    {[...Array(pagesCount).keys()].map((index) => (
+                        <li 
+                            key={index + 1} 
+                            className={index + 1 === currentPage ? 'active' : ''}
+                            onClick={index + 1 === currentPage ? null : () => this.onPageClick(index + 1)}
+                        >
+                            {index + 1}
+                        </li>
+                    ))}
+                </ul>
             </div>
         );
     }

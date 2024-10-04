@@ -1,7 +1,11 @@
+import { ITEMS_PER_PAGE } from "../../core/constants";
+
 class TableBloc {
-    constructor(fieldsInfoStorage, itemsStorage) {
+    constructor(fieldsInfoStorage, itemsStorage, filtersStorage, searchByFieldsUseCase) {
         this.fieldsInfoStorage = fieldsInfoStorage;
         this.itemsStorage = itemsStorage;
+        this.filtersStorage = filtersStorage;
+        this.searchByFieldsUseCase = searchByFieldsUseCase;
 
         this.fields = fieldsInfoStorage.getAllFieldsInfo();
         this.activeFields = this.fields;
@@ -37,6 +41,10 @@ class TableBloc {
     changeActiveFields = (activeFields) => {
         this.activeFields = activeFields;
         this.notifyViewAboutChanges();
+    };
+
+    onPageClick = async (page) => {
+        await this.searchByFieldsUseCase.searchByFields(this.filtersStorage.filters, ITEMS_PER_PAGE * (page - 1))
     }
 }
 

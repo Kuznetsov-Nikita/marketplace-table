@@ -1,5 +1,6 @@
 import ItemsRepository from '../data/ItemsRepository';
 import FieldsInfoStorage from '../domain/storages/FieldsInfoStorage';
+import FiltersStorage from '../domain/storages/FiltersStorage';
 import ItemsStorage from '../domain/storages/ItemsStorage';
 import GetFieldsUseCase from '../domain/use-cases/GetFieldsUseCase';
 import SearchByCodeUseCase from '../domain/use-cases/SearchByCodeUseCase';
@@ -17,6 +18,7 @@ function App() {
 
     const fieldsInfoStorage = new FieldsInfoStorage();
     const itemsStorage = new ItemsStorage();
+    const filtersStorage = new FiltersStorage();
     const getFieldsUseCase = new GetFieldsUseCase(itemsRepository, fieldsInfoStorage);
     const searchByCodeUseCase = new SearchByCodeUseCase(itemsRepository, itemsStorage);
     const searchByFieldsUseCase = new SearchByFieldsUseCase(itemsRepository, itemsStorage);
@@ -24,8 +26,8 @@ function App() {
     getFieldsUseCase.getFields();
 
     const searchByCodeBloc = new SearchByCodeBloc(searchByCodeUseCase);
-    const tableBloc = new TableBloc(fieldsInfoStorage, itemsStorage);
-    const filtersBloc = new FiltersBloc(fieldsInfoStorage, searchByFieldsUseCase);
+    const tableBloc = new TableBloc(fieldsInfoStorage, itemsStorage, filtersStorage, searchByFieldsUseCase);
+    const filtersBloc = new FiltersBloc(fieldsInfoStorage, searchByFieldsUseCase, filtersStorage);
 
     return (
         <div className="App">
