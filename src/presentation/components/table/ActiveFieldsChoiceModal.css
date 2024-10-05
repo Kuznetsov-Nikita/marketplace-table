@@ -1,9 +1,9 @@
 .active-fields-choice-modal {
     display: none;
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
+    left: 0;
+    z-index: 1;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -15,12 +15,12 @@
 }
   
 .active-fields-choice-modal-content {
-    background-color: #fefefe;
+    width: 80%;
+    max-width: 600px;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
+    background-color: #fefefe;
 }
   
 .active-fields-choice-modal-content h2 {

@@ -4,11 +4,11 @@
 }
 
 .subfilter {
-    margin: 5px 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    margin: 5px 20px;
 }
 
 .values-choice {

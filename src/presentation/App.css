@@ -17,10 +17,10 @@ label {
 }
   
 input {
+    margin-right: 1rem;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-right: 1rem;
 }
 
 input[type='text'] {
@@ -29,9 +29,9 @@ input[type='text'] {
   
 button {
     padding: 0.5rem 1rem;
-    background-color: #ff8800;
-    color: #fff;
     border: none;
     border-radius: 4px;
+    color: #fff;
+    background-color: #ff8800;
     cursor: pointer;
 }
